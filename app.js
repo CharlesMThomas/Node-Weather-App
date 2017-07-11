@@ -23,3 +23,14 @@ geocode.geocodeAddress(argv.address, (errorMessage, results) => {
         console.log(JSON.stringify(results, undefined, 2));
     }
 });
+
+request({
+    url: 'https://api.darksky.net/forecast/49527ad19bc2c83b6d50590d75027aae/37.8267,-122.4233',
+    json: true
+}, (error, response, body) => {
+    if (!error && response.statusCode === 200) {
+        console.log(body.currently.temperature);
+    } else {
+        console.log('Unable to fetch weather.');
+    }
+});
